@@ -1,7 +1,7 @@
 <x-layout title="Home">
     <div class="d-flex align-items-center justify-content-between">
         <h1>Chauffeur List</h1>
-        <a href="" class="btn btn-primary"> Noveau Chauffer</a>
+        <a href="{{route('chauffeur.create')}}" class="btn btn-primary"> Noveau Chauffer</a>
     </div>
     <div>
         <table class="table">

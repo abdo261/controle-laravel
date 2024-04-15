@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chauffeur;
+use App\Models\Voiture;
 use Illuminate\Http\Request;
 
 class ChauffeurController extends Controller
@@ -15,7 +16,6 @@ class ChauffeurController extends Controller
         $chauffeurs = Chauffeur::with('voiture')->paginate(10);
         // dd($chauffeurs);
         return view('pages.chauffeur.index', compact('chauffeurs'));
-      
     }
 
     /**
@@ -23,7 +23,8 @@ class ChauffeurController extends Controller
      */
     public function create()
     {
-        //
+        $voitures = Voiture::all();
+        return view('pages.chauffeur.create', compact('voitures'));
     }
 
     /**
@@ -31,7 +32,22 @@ class ChauffeurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'nom' => 'required | string | min:3',
+            'prénom' => 'required | string | min:3',
+            'age' => 'required | numeric | min:18 | max:60',
+            'numéro_permis' => 'required | string',
+            'type_permis' => 'required | string',
+            'cin' => 'required | string',
+            'voiture' => 'nullable | exists:voitures'
+        ]);
+        $voiture = null;
+        if ($request->has('voiture')) {
+            $voiture = $request->input('voiture');
+        }
+        Chauffeur::create([...$request->all(), $voiture]);
+     
+        return redirect()->route('chauffeur.index');
     }
 
     /**
