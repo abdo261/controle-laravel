@@ -23,8 +23,8 @@ class ChauffeurFactory extends Factory
             'nom' => fake()->firstName(),
             'prénom' => fake()->lastName(),
             'age' => fake()->numberBetween(18, 60),
-            'numéro-permis' => fake()->unique()->iban(),
-            'type-permis' => fake()->randomElement(["A", "B", "C", "D", "E"]),
+            'numéro_permis' => fake()->unique()->iban(),
+            'type_permis' => fake()->randomElement(["A", "B", "C", "D", "E"]),
             'cin' => fake()->unique()->iban(),
             'voiture_id'=>fake()->randomElement([...$chauffeurs,null])
         ];

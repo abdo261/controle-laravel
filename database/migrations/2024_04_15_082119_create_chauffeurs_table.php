@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prénom');
             $table->integer('age');
-            $table->string('numéro-permis')->unique();
-            $table->enum('type-permis',["A","B","C","D","E"]);
+            $table->string('numéro_permis')->unique();
+            $table->enum('type_permis',["A","B","C","D","E"]);
             $table->string('cin')->unique();
             $table->foreignId('voiture_id')->nullable();
 

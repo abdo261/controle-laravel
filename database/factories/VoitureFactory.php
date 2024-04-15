@@ -19,7 +19,7 @@ class VoitureFactory extends Factory
         return [
             'immatricule' => fake()->unique()->iban(),
             'modèle' => fake()->year(),
-            'type-carburant' => fake()->randomElement([
+            'type_carburant' => fake()->randomElement([
                 'essence', 'diesel',
                 'hybride', 'électrique'
             ])

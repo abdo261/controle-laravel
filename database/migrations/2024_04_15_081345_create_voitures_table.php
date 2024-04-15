@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('immatricule')->unique();
             $table->integer('modèle');
-            $table->enum('type-carburant',['essence', 'diesel', 
+            $table->enum('type_carburant',['essence', 'diesel', 
             'hybride' , 'électrique']);
             $table->timestamps();
         });
